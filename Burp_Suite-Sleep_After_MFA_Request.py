@@ -4,8 +4,7 @@
 This solves a specific problem Burp Suite has when performing a scan of 'crawl and audit' on sites that use mfa for login but the site only allows the mfa code number to be used once.  Once the mfa code number is used, the site does not allow using that same code number again, and so it causes Burp Suite scans of 'crawl and audit' to error on login requests.  
 The mfa code number gets renewed to a different number every 30 seconds.  So this extension adds functionality to Burp Suite that allows waiting 30 seconds after each mfa code number that is submitted.  
 The amount of time can easilly be changed by changing the time.sleep amount to a different amount.  
-This extension is helpful not only for solving this Burp Suite issue, but any type of requests that require a waiting time period before issuing the next request while not sleeping for all other requests. 
- This can be configured by changing the string 'MFA_CODE' it is searching for to trigger the sleep action to a different string from the response.
+This extension is helpful not only for solving this Burp Suite issue, but any type of requests that require a sleep before issuing the next request, while not sleeping for all other requests. This can be configured to suit other requests by changing the string 'MFA_CODE' (which triggers the sleep action) to a different string that is expected in the response for certain requests.
 '''
 
 from burp import IBurpExtender, IExtensionStateListener, IHttpListener, IHttpRequestResponse, ISessionHandlingAction
